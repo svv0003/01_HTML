@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 폼</title>
+    <style>
+      label {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#">
+      <label
+        >이름 :
+        <input type="text" name="username" placeholder="이름을 입력하세요"
+      /></label>
+      <h4>SNS에서 이메일을 가지고 와서 회원가입을 진행할 때</h4>
+      <!--
+      readonly  : SNS 이메일을 가지고 와서 회원가입하거나
+                  소비자가 인지만 하고 수정은 하면 안 되며, 동의에 대한 절차를 진행해야 할 때 주로 사용
+      -->
+      <label
+        >이메일 :
+        <input type="email" name="useremail" value="google@gmail.com" readonly
+      /></label>
+      <!--
+      required : 입력된 값이 없으면 제출 불가능
+                 필수로 작성되어야 하는 input 태그에 공백으로 제출되는 것을 방지!
+
+      input value : 소비자가 작성하지 않았을 때 데이터를 빈 값으로 전달하지 않도록 기본값 설정
+                    input에서는 초기 기본값을 설정해주지 않는 이상 value 필요하지 않지만
+                    checkbox, radio, option과 같이 개발자가 정해놓은 값을 소비자가 설정해야 할 경우는
+                    소비자가 선택한 값이 무엇인지 개발자가 지정해줄 필요가 있다
+      -->
+      <label
+        >비밀번호 :
+        <input
+          type="password"
+          name="password"
+          placeholder="비밀번호를 입력하세요"
+          required
+      /></label>
+      <label
+        >성별 :
+        <select name="gender">
+          <option value="male">남성</option>
+          <option value="female">여성</option>
+        </select></label
+      >
+      <button>제출하기</button>
+    </form>
+  </body>
+</html>
