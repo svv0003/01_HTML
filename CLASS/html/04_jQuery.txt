@@ -1,0 +1,307 @@
+JQuery
+
+
+HTML        : 기본 골격 구조
+CSS         : 보이는 모습을 꾸미는 화장 역할
+JavaScript  : HTML을 기능하게 하는 근육 역할
+JQuery      : 움직임, 활동을 쉽게 도와주는 인대 역할
+
+
+jQuery : HTML 문서 조작, 이벤트 처리, 애니메이션, AJAX 등을
+          쉽게 구현할 수 있게 해주는 경량 JavaScript 라이브러리
+         JavaScript 불편함을 해소하기 위해 만든 라이브러리이기 때문에
+          개발자가 원하는 기능을 동작시키는 무궁무진한 메소드가 존재한다.
+
+
+CDN : 파일을 여러 지역의 서버에 캐싱해 사용자와 가까운 서버에서 빠르게 제공하는 시스템
+
+jQuery CDN : 개발자가 jQuery 파일을 직접 다운로드해 서버에 올리지 않아도,
+             CDN에서 호스팅된 jQuery를 웹페이지에 링크로 연결해 사용할 수 있게 한다.
+
+        HTML / DOM 조작 : 웹페이지의 특정 요소를 쉽게 찾고, 내용을 바꾸거나 스타일을 변경,
+                         새로운 요소를 추가하거나 삭제 가능
+                         ex) 특정 버튼을 누르면 글자색을 변경할 수 있음
+
+        이벤트 처리 : 사용자의 클릭, 마우스 오버, 키보드 입력 등
+                    다양한 이벤트를 간단히 처리할 수 있는 코드를 제공
+
+        애니메이션 효과 : 웹 페이지 요소들을 부드럽게 사라지게(Fade Out) 또는 나타나게(Fade In),
+                      슬라이딩 등의 다양한 애니메이션 효과를 구현 가능
+
+        Ajax(Asynchronous JavaScript and XML) : 페이지 전체를 새로고침하지 않아도 서버와 데이터를 주고 받아서
+                                                동적으로 페이지의 일부를 업데이트 할 수 있게 한다.
+                                                ex) 로그인 시 페이지 고침 없이 로그인 창만 변경
+                                                    댓글 작성 시 페이지 이동 없이 바로 댓글만 추가 또는 삭제, 수정
+
+jQuery 사용법 : 저장된 라이브러리 파일이나 CDN 링크를 연결해서 사용한다.
+              링크는 </head> 태그 바로 위에 추가해서 사용한다.
+
+              <script src="../js/jQuery-3.7.1.min.js"></script>
+              <script
+                src="https://code.jquery.com/jquery-3.7.1.min.js"
+                integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+                crossorigin="anonymous"
+              ></script>
+
+              jQuery CDN 사이트로 이동하면 아래와 같이 보일 것
+              jQuery 3.x
+              jQuery Core 3.7.1: uncompressed, minified, slim, slim minified
+
+              uncompressed  : 모든 기능이 포함된 원본 코드                          개발용            (코드 분석, 학습, 디버깅)
+              minified      : 모든 기능이 포함된 압축 코드                          배포용/실서비스용    (일반적으로 많이 사용)
+              slim          : 일부 기능이 제외된 원본 코드   Ajax/애니메이션 기능X      개발용            (제외된 기능 불필요할 때)
+              slim minified : 일부 기능이 제외된 압축 코드                          배포용/실서비스용    (최적의 성능만 필요할 경우)
+
+jQuery 기본 문법 : $(선택자).동적함수();
+
+                 $        : jQuery를 의미하는 기호, jQuery 문법을 시작하겠다는 신호
+                 (선택자)   : 동작을 적용하고 싶은 HTML 요소 선택 (css 선택자와 거의 동일한 방식)
+                          JavaScript에서의 querySelectorAll() 기능처럼 모든 해당 요소 선택
+                 - class  : .
+                 - id     : #
+                 - tag    : tag 명칭
+
+                 - A.not(B) : 선택된 A 요소들 중에서 특정 B 요소들을 제외하는 메소드
+                 ex) $(".answer")                 : class="answer" 요소들을 모두 선택
+                        .not($(this).children())  : 해당 이벤트 요소의 자식 요소는 제외
+                            .slideUp();           : 슬라이드 효과를 접겠다는 뜻!!!
+
+                 $("p")        : 모든 <p>태그를 선택
+                 $("#myId")    : id가 "myId"인 요소를 선택
+                 $(".myClass") : class가 "myClass"인 요소를 선택
+
+                 동적함수(Action) : 선택된 요소에 실행할 동작을 지정
+                  .hide()              : 요소를 숨김
+                  .show()              : 요소를 보여줌
+                  .text("새로운 글자")    : 요소의 텍스트를 변경
+                  .css("color", "red") : 요소의 css 스타일을 변경
+                  .val()               : input select 같은 폼 요소의 값을 가져오거나 변경
+                  .attr("속성명칭". "값") : 요소의 속성 변경
+
+jQuery 필수 구조 : $(document).ready()
+
+                 jQuery 코드는 동작하려는 html 요소가 화면에 모두 그려진 다음에 실행되어야 안전하다.
+                 만약 HTML이 만들어지기도 전에 jQuery가 특정 요소를 찾으려고 하면 오류 발생한다.
+                 모든 jQuery 코드는 $(document).ready() 함수 기능 안에 작성하는 것이 기본 규칙!!
+
+                 $(document).ready(function(){
+                   // jQuery 코드
+                 })
+
+                 $(function(){
+                     // jQuery 코드
+                 })
+
+-------------------------------------------------
+
+ex1)
+1- $(document).ready(function () {
+2- $(function () {
+  1- $("#btn").click(function () {                  // 익명함수 this 함수 사용 가능!!
+  2- $("#btn").click(() => {                        // 익명함수 화살표 함수 사용 가능!!
+      $("#title").text("버튼이 클릭되었습니다.");
+      $("#description").fadeOut(700).fadeIn(500);
+      $("#box").toggleClass("highlight");
+  });
+});
+
+ex2)
+$(() => {
+  $("#toggleBtn").click(() => {
+    $("body").toggleClass("dark-mode");
+  });
+});
+
+ex3)
+$(function () {
+  $("li").click(function () {
+    $("li").removeClass("active");
+    $(this).addClass("active");
+  });
+});
+
+/*
+#menu li  : id가 "menu"인 <ul> 태그 내부에 모든 <li> 태그에 클릭 이벤트 설정하겠다.
+this      : 사용자가 클릭한 <li> 태그만 바라보겠다.
+            단순히 #menu li = this 형식이 아니라 this는 사용자가 감지한 위치를 가리키기도 한다.
+            + 이벤트(행위, 행동) 발생한 HTML 요소를 가리킨다.
+            + function()에서만 사용 가능하다!!!
+
+            $("#menu li").addClass("active");   <- #menu 안에 존재하는 모든 <li> 태그를 바라보겠다.
+            $(this).addClass("active");         <- 사용자가 클릭한 <li> 태그를 바라보겠다.
+*/
+
+ex4)
+$(function () {
+  $("#btn").click(() => {
+    const name = $("#name").val().trim();
+    const email = $("#name").val().trim();
+    const message = $("#name").val().trim();
+
+    /*
+    if (name && email && message) {
+      $("#status")
+        .text("문의가 정상적으로 접수되었습니다.")
+        .css("color", "green");
+    } else {
+      $("#status").text("모든 항목을 입력해주세요.").css("color", "red");
+    }
+    */
+
+    if (name && email && message) {
+      $("#status")
+        .toggleClass("green")
+        .text("문의가 정상적으로 접수되었습니다.");
+    } else {
+      $("#status").toggleClass("red").text("모든 항목을 입력해주세요.");
+    }
+  });
+});
+
+ex5)
+$(function () {
+  $("#add").click(function () {
+    $("#boxArea").append("<div class='box'>박스</div>");
+  });
+  $("#del").click(function () {
+    $(".box:last").remove();
+  });
+});
+
+-------------------------------------------------
+
+기본 시각 효과 메소드
+
+                    * ms시간초  : 500=0.5초, 1000=1초
+  fadeIn() / fadeOut()        : 투명도 변화로 나타남 / 사라짐
+            ex) .fadeIn(500)  : 0.5초 동안 부드럽게 나타난다.
+            ex) .fadeIn(1000) : 1초 동안 부드럽게 나타난다.
+  slideDown() / slideUp()     : 슬라이드 효과로 펼침 / 접힘
+  show() / hide()             : 기본 표시 / 숨김
+  toggle()                    : 상태에 따라 보이기 / 숨기기 (숨김->보이기, 보임->숨기기)
+  animate()                   : css 속성을 단계적으로 애니메이션 처리
+                                width, height, opacity, margin, top, left 등 조작 가능
+            ex) .animate({ css 속성 : 속성 값들 }, 시간, 시간 후에 작업할 기능, 스타일 설정)
+
+  hover()                     : 마우스가 요소에 올라갔을 때 변화 메소드
+            ex) .hover(mouseEnter함수, mouseLeave함수)
+
+-------------------------------------------------
+
+$(() => {
+  $("#openModal").click(function () {
+    1- $("#modalOverlay").fadeIn(300);
+    2- $("#modalOverlay").fadeOut(300);
+  });
+})
+
+1- $("#loginModal").click(function (e) {
+     if (e.target === this) {
+       $("#loginModal").fadeOut();
+     }
+   });
+
+2- $(() => {
+     $(".modal-content").click(function (e) {
+       e.stopPropagation();
+     })
+   })
+
+$(".tab-btn").click(function(){
+    const targetTab = $(this).data("tab");
+    $(".tab-btn").removeClass("active");
+    $(this).addClass("active");
+    $(".tab-content").slideUp(1);
+    $("#" + targetTab).slideDown();
+})
+
+$("#startProgress").click(function(){
+  $("#progressBar").animate({
+    width: "100%",
+  }, 2000, function(){
+    $("#progressBar").text("100%");
+  })
+})
+$("#resetProgress").click(function(){
+  $("#progressBar").css("width", "0%").text("0%");
+})
+
+$("#flipCard").click(function(){
+  $(this).toggleClass("flipped");
+})
+
+$(".dropdown").hover(
+  function(){
+    $("#dropdownMenu").slideDown(200);
+  },
+  function(){
+    $("#dropdownMenu").slideUp(200);
+  }
+)
+
+$("#homeBtn").click(function () {
+  $("html, body").animate({ scrollTop: 0 }, 500);
+});
+
+// 이미지 슬라이드 효과
+$(() => {
+  let nowPage = 0;
+  const width = 300;
+  const imgAmount = $(".slide").length;
+
+  $("#next").click(function () {
+    if (nowPage < imgAmount - 1) {
+      nowPage++;
+      $(".slide-wrap").animate(
+        {
+          left: -width * nowPage,
+        },
+        500
+      );
+    } else {
+      alert("마지막 이미지입니다.")
+    }
+  });
+
+  $("#prev").click(function () {
+    if (nowPage > 0) {
+      nowPage--;
+      $(".slide-wrap").animate(
+        {
+          left: -width * nowPage,
+        },
+        500
+      );
+    } else {
+      alert("첫 번째 페이지입니다.")
+    }
+  });
+});
+// left: -width * nowPage
+// 첫 번째 이미지 (nowPage=0) : left: -300px * 0 = 0       -> 슬라이드 위치가 0, 원래 위치에 첫 번째 사진이 존재
+// 두 번째 이미지 (nowPage=1) : left: -300px * 1 = -300px  -> 슬라이드 위치가 1, 현재 위치에 두 번째 사진이 존재
+// 세 번째 이미지 (nowPage=2) : left: -300px * 2 = -600px  -> 슬라이드 위치가 2, 현재 위치에 세 번째 사진이 존재
+
+-------------------------------------------------
+
+HTML        : 웹 페이지의 구조를 설계하는 언어
+              웹사이트는 HTML을 기반으로 구조를, CSS로 디자인을, JavaScript로 동작을 부여한다.
+
+CSS         : HTML 요소의 디자인(스타일)을 지정하는 언어
+              글자 크기, 색상, 간격, 배치 등 웹 요소의 외형을 꾸미는 역할을 한다.
+
+JavaScript  : 웹 브라우저에서 동적인 동작을 구현하기 위한 프로그래밍 언어
+
+jQuery      : HTML 문서 조작, 이벤트 처리, 애니메이션, AJAX 등을 쉽게 구현할 수 있게 해주는 경량 JavaScript 라이브러리
+              불편한 JavaScript를 위해 만든 라이브러리이기 때문에 개발자가 원하는 기능을 동작시키는 무궁무진한 메소드가 존재한다.
+
+JSON        : 
+
+Ajax        : 웹 페이지의 속도 향상, ? 처리 완료 기다리지 않고 처리 가능, 코딩 양 감소, 
+              사용자에 의한 요청 이벤트 발생
+                이벤트 핸들러에 의해 JS 호출
+                  JS가 XMLHttpRequest 객체를 사용해서
+
+XMLHttpRequest  : 문서 인터넷 요청 - 서버와 상호작용할 때 사용
+                                 페이지 새로고침 없이 URL에서 데이터 가져올 수 있고, 사용자 작업 방해 X, 페이지 일부 업데이트 가능
+

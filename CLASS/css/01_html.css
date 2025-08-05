@@ -1,0 +1,146 @@
+body {
+  background-color: #5a7590;
+}
+
+body h1 {
+  color: #f8f8f2;
+}
+
+/* 전체 컨테이너 스타일 */
+#container {
+  max-width: 900px; /* 최대 너비 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 20px; /* 내부 여백 */
+  font-family: "Segoe UI", Arial, sans-serif; /* 깔끔한 폰트 */
+}
+
+/* 각 섹션 컨테이너 스타일 */
+.container {
+  cursor: pointer; /* 클릭 가능 표시 */
+  background-color: rgb(250, 204, 204); /* 흰색 배경 */
+  border-radius: 10px; /* 부드러운 모서리 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
+  margin-bottom: 15px; /* 섹션 간 간격 */
+  padding: 15px; /* 내부 여백 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 컨테이너 호버 효과 */
+.container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 호버 시 그림자 강조 */
+  transform: translateY(-2px); /* 살짝 위로 이동 */
+}
+
+/* 제목 스타일 */
+.container h2 {
+  color: #2c3e50; /* 짙은 남색 */
+  font-size: 24px; /* 제목 크기 */
+  margin: 0 0 10px; /* 하단 여백 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 제목과 화살표 배치 */
+}
+
+/* 화살표 아이콘 추가 (토글 상태 표시) */
+.container h2::after {
+  content: "▼"; /* 기본 화살표 (닫힌 상태) */
+  font-size: 16px;
+  color: #3498db; /* 파란색 화살표 */
+  transition: transform 0.3s ease; /* 부드러운 회전 */
+}
+
+/* 활성화된 컨테이너의 화살표 회전 */
+.container.active h2::after {
+  transform: rotate(180deg); /* 열린 상태에서 화살표 회전 */
+}
+
+/* instruction 요소 스타일 */
+.instruction {
+  display: none; /* 기본적으로 숨김 */
+  background-color: #2d2d2d; /* 어두운 코드 배경 */
+  color: #f8f8f2; /* 밝은 텍스트 */
+  padding: 15px; /* 내부 여백 */
+  border-radius: 6px; /* 부드러운 모서리 */
+  font-family: "Consolas", "Monaco", monospace; /* 코드용 폰트 */
+  font-size: 14px; /* 코드 텍스트 크기 */
+  overflow-x: auto; /* 긴 코드 스크롤 가능 */
+}
+
+/* 반응형 디자인 (모바일) */
+@media (max-width: 768px) {
+  #container {
+    padding: 10px; /* 모바일에서 여백 축소 */
+  }
+  .container h2 {
+    font-size: 20px; /* 모바일에서 제목 크기 조정 */
+  }
+  .instruction pre {
+    font-size: 12px; /* 모바일에서 코드 텍스트 크기 축소 */
+  }
+}
+
+pre {
+  font-size: 0.7rem;
+}
+
+nav {
+  padding: 15px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.logo > a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+.nav-item {
+  background: #555;
+  border-right: 1px solid #666;
+}
+
+.nav-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.nav-item:last-child {
+  border-radius: 0 5px 5px 0;
+  border-right: none;
+}
+
+.nav-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.nav-item:hover {
+  background: coral;
+}
+
+.nav-item.active {
+  background: rgb(236, 100, 51);
+}

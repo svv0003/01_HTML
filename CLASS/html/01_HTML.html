@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/01_HTML.css" />
+    <link rel="icon" type="image/png" href="../img/logo.png" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="01_HTML.html" class="nav-link">HTML</a></li>
+          <li class="nav-item"><a href="02_CSS.html" class="nav-link">CSS</a></li>
+          <li class="nav-item"><a href="03_JavaScript.html" class="nav-link">JavaScript</a></li>
+          <li class="nav-item"><a href="04_jQuery.html" class="nav-link">jQuery</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    
+    <div id="container">
+      <h1>HTML</h1>
+      <div class="container" id="container-1">
+        <h2>HTML 개요</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction1">
+          <pre></pre>
+        </div>
+      </div>
+        
+
+      <div class="container" id="container-2">
+        <h2>HTML 구조</h2>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <div class="instruction" id="instruction2">
+          <pre>
+&lt;!DOCTYPE html&gt;             : 문서 태그
+  DOCument TYPE html        : html 문서 형식 타입
+                                글이나 기록으로 남겨 증명하거나 전달한다.
+
+&lt;html lang="en"&gt;            : html 태그
+  lang="en"                 : 웹 브라우저 또는 스크린 리더(시각장애인용 도구)
+                                어떤 문서로 작성되어 있는가를 알려준다.
+                                검색 엔진 문서의 주 언어를 이해해서 더 정확한 검색 결과 제공한다.
+                                브라우저의 자동 번역 기능이 문서의 언어를 올바르게 판단하는데 도움을 준다.
+
+&lt;head&gt;                      : head 태그
+html 문서 정의 내용 작성
+화면에 표시되지 않는다.
+
+
+charset="UTF-8"                 : 한글 깨짐 방지 영어나 숫자 이외 언어는 글자가 깨질 수 있다.
+                                    UTF-8 문자 깨지지 않고 표현한다.
+
+NAME="viewport"                 : 모바일 웹에서의 화면 크기와 확대 비율 설정한다.
+content="width=device-width,    : (width=가로) 기기의 실제 화면 너비에 맞춰 문서를 표현
+initial-scale=1.0"              : 처음에 화면을 100% 비율로 보여주기
+
+&lt;title&gt;                     : 웹 브라우저 제목을 작성하는 태그
+&lt;style&gt;                     : CSS(html 꾸미기)를 작성하는 태그
+&lt;link&gt;                      : Link 연결을 설정하는 태그
+
+&lt;body&gt;                      : body 태그
+                                화면(브라우저)에 보여질 내용을 작성하는 곳이다.
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-3">
+        <h2>글자 관련 태그</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction3">
+          <pre>
+&lt;h1, h2, h3, h4, h5, h6&gt;    : 제목을 나타내는 태그 (Highlight)
+&lt;hr&gt;                        : 수평선을 긋는 태그 (HoRizon)
+                                수평선 중간에 글자를 작성할 이유가 없기 때문에 닫는 태그가 필요하지 않다.
+
+&lt;br&gt;                        : 줄바꿈 태그
+& nbsp ;                    : 띄어쓰기 문구
+                                연이은 띄어쓰기 또는 줄바꿈은 하나만 표시되기 때문에 사용한다.
+
+&lt;p&gt;                         : 문단, 단락 태그 (Paragraph)
+                                글을 작성하는 용도, 문단 앞 뒤로 공백이 생긴다.
+&lt;pre&gt;                       : 사전 형식 지정 태그 (PREformatted)
+                                태그 내부에 작성된 글 형식 그대로 출력된다.
+
+&lt;b&gt;                         : <b>단순히 글자를 굵게 표시하는 태그</b>
+&lt;i&gt;                         : <i>단순히 글자를 기울여 표시하는 태그</i>
+
+&lt;strong&gt;                    : <strong>글자(단어)를 강조하는 용도의 태그</strong>
+&lt;em&gt;                        : <em>글자(문장)를 강조하는 용도의 태그</em>
+                                웹 접근성을 위해 &lt;b&gt; &lt;i&gt; 대신 &lt;strong&gt; &lt;em&gt; 사용하는 것이 매너이다.
+                                웹 접근성이란 일반인 뿐만 아니라 장애인, 고령자들을 위해
+                                  웹 사이트에서 제공하는 서비스를 모두 이용할 수 있도록 보장한 의무사항이다.
+
+&lt;mark&gt;                      : <mark>형광펜 효과를 나타내는 태그</mark>
+&lt;u&gt;                         : <u>밑줄을 긋는 태그</u>
+&lt;s&gt;                         : <s>글자 가운데 선을 긋는 취소선, 잘못 작성됨을 표시하는 태그</s>
+&lt;del&gt;                       : <del>글자 가운데 선을 긋는 삭제선, 이제 없는 것을 표시할 때 사용하는 태그</del>
+                                s, del 태그는 용도에 맞게 사용하는 것이 좋다.
+        
+&lt;small&gt;                     : <small>글자를 작게 표시하는 태그</small>
+&lt;sup&gt;                       : 윗첨자 태그
+                                ex) x<sup>2</sup>
+&lt;sub&gt;                       : 아래첨자 태그
+                                ex) log<sub>2</sub>
+&lt;abbr&gt;                      : 툴팁 태그
+                                마우스 오버 시 툴팁 표시된다.
+                                ex) <abbr title="메롱">마우스 올려보기</abbr>
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-4">
+        <h2>목록 관련 태그</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction4">
+          <pre>
+Emmet                       : HTML, CSS의 빠른 자동 완성을 지원하는 플러그인
+                                ex) &lt;ul&gt;li*5{아이템$}&lt;/ul&gt;
+
+태그명                        : 태그 자동 완성
+
+>                           : 태그 내부에 완성(하위)
++                           : 형제(같은 레벨)로 작성
+*                           : 숫자만큼 곱해서 생성
+{}                          : 태그 내부에 작성될 내용
+$                           : 1부터 1씩 증가하는 숫자
+
+&lt;ul&gt;                        : 순서가 없는 목록 태그 (Unordered List)
+&lt;li&gt;                        : 목록의 한 줄(목록 중 낱개) (List Item)
+
+&lt;ol&gt;                        : 순서가 있는 목록 태그 (Ordered List)
+
+type 속성                    : 표시되는 숫자 모양을 변경한다.
+type="a"                    : 영어 소문자(a, b, c, d,...)
+type="A"                    : 영어 대문자(A, B, C, D...)
+type="i"                    : 로마 소문자(i, ii, iii, iv, v,...)
+type="I"                    : 로마 대문자(I, II, III, IV, V,...)
+
+start 속성                   : 시작 숫자 지정
+reversed                    : 숫자 역순 (거꾸로 번호 시작)
+
+&lt;dl&gt;                        : 설명 목록 태그 (Description List)
+&lt;dt&gt;                        : 설명 제목 태그
+&lt;dd&gt;                        : 설명 내용 태그
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-5">
+        <h2>표 관련 태그</h2>
+        <pre>
+웹 문서에서 자료(데이터) 정리를 위해 사용하는 태그
+table 태그는 행, 열을 작성하기 위한 판을 나타낸다.
+        </pre>
+        <div class="instruction" id="instruction5">
+          <pre>
+&lt;thead&gt;                     : 테이블 상단 영역 (컬럼 제목 작성하는 부분)
+&lt;thead&gt;                     : 테이블 중단 영역 (내용, 값을 작성하는 부분)
+&lt;thead&gt;                     : 테이블 하단 영역 (합계, 인원 수를 작성하는 부분)
+                                table 태그 내부를 thead, tbody, tfoot으로 나누지 않으면
+                                모든 tr, td, th 태그는 tbody 내부에 작성된 것으로 취급된다.
+
+
+&lt;tr&gt;                        : 행 태그 (Table Row)
+&lt;th&gt;                        : 강조 태그 (Table Header)
+                                테이블의 제목 또는 내용을 강조한다.
+                                두꺼운 글씨, 가운데 정렬이 자동으로 적용된다.
+&lt;td&gt;                        : 셀 태그 (Table Data)
+                                한 행의 한 컬럼(셀)을 나타낸다.
+
+colspan="2"                 : 두 개 크기의 셀 하나를 지정한다.
+
+rowspan                     : 행 병합 (세로 병합)
+colspan                     : 열 병합 (가로 병합)
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-6">
+        <h2>이미지 관련 태그</h2>
+        <pre>
+웹 문서에서 사진이나 그림 같은 이미지를 삽입하는 태그
+        </pre>
+        <div class="instruction" id="instruction6">
+          <pre>
+속성                         : 시작 태그에 작성하는 내용
+
+src                         : 삽입할 이미지의 경로를 작성하는 속성 (파일 위치, 인터넷 주소)
+                                컴퓨터 절대 경로는 라이브 서버로 확인하는 것은 불가능하다.
+                                컴퓨터 상태 경로는 라이브 서버로 확인하는 것은 가능하다.
+width / height              : 너비 / 높이를 지정하는 속성
+alt(대안)                    : 이미지 설명을 작성하는 속성
+                                이미지가 출력되지 않는 경우 화면에 이미지 대신 글자를 출력되거나 스크린 리더가 읽는다.
+
+절대 경로                     : 컴퓨터 기준 내부 파일 위치 경로
+                                ex) &lt;img src="images/cat1.jpg" alt="고양이" /&gt;
+상대 경로                     : 현재 파일 기준 파일 위치 경로
+                                ex) &lt;img src="../images/cat1.jpg" alt="고양이" /&gt;
+                                
+고정 크기 단위(px)             : 항상 고정된 크기를 지님
+                                우리가 mm, cm를 사용하는 것처럼 컴퓨터는 가로 세로 크기 단위 기본값을 px로 갖는다.
+                                ex) &lt;img src="../images/cat1.jpg" width="300px" height="240px" /&gt;
+                                
+                                평균 width 기준으로 기기 너비     : desktop 대형 모니터 - 1440 ~ 1920px
+                                : laptop 노트북      - 1280 ~ 1440px
+                                : tablet 태블릿      - 768 ~ 1024px
+                                : mobile(가로) 핸드폰 - 640 ~ 768px
+                                : mobile(세로) 핸드폰 - 360 ~ 430px
+                                
+가변 크기 단위(%)              : 화면 또는 영역에 대한 상대적인 크기 단위
+                                ex) &lt;img src="../images/cat1.jpg" width="15%" height="240px" /&gt;
+
+고정 + 가변 크기 설정           : 고정 크기로 설정된 태그 내부에 일정한 크기의 이미지를 출력하는 방식
+                                ex) &lt;div style="width: 1280px; height: 300px"&gt;
+                                      &lt;img src="../images/cat1.jpg" width="15%" height="240px" /&gt;
+                                    &lt;/di&gt;
+        </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-7">
+        <h2>영역 관련 태그</h2>
+        <pre>
+        </pre>
+        <div class="instruction" id="instruction7">
+          <pre>
+display: block;             : 화면 수직 분할
+                                세로 화면을 가로로 잘라서 층(행)을 나누고, 한 층(행)을 모두 차지한다.
+                                width, height와 같은 크기 지정 속성 사용 가능하다.
+                                
+                                block 형식의 태그 : h1 ~ h6 (제목), p/pre(문단), hr(수평선), div(영역 분할)
+
+display: inline;            : 화면 수평 분할
+                                가로 화면을 세로로 잘라서 호(열)을 나누고, 한 층(행)을 모두 차지하지 않는다.
+                                내부에 작성된 내용만큼 크기를 차지하며, 열에서 이어서 작성되는 성질을 가지고 있다.
+                                width, height 와 같은 크기 지정 속성 사용 불가능하다.
+                                
+                                inline 형식의 태그 : b(굵게), i(기울이기), mark(글배경 칠하기), span(영역 분할) 등
+
+display: inline-block;      : 화면 수직 분할
+                                수평 분할(줄을 세로로 자름, 열 나눔), 크기 지정이 가능하다.
+                                inline-block 형식의 태그 : img 태그, iframe 태그
+
+&lt;iframe&gt;                    : 웹 문서(html) 내부에 또 다른 웹 문서를 추가하는 태그
+                                유튜브, 구글맵 등 링크 퍼오기를 통해 웹 브라우저에서 실행 가능하다.
+
+&lt;iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/owl56Pp-k-g?si=_zEsWtUPcXKSH3VN"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+&gt;&lt;/iframe&gt;                                
+
+&lt;iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1581.1642145055635!2d127.00526638888304!3d37.57088329300945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca322d29cc2e3%3A0x36df4e2aefb0e66!2z64-Z64yA66y47KKF7ZWp7Iuc7J6l!5e0!3m2!1sko!2skr!4v1752480359469!5m2!1sko!2skr"
+  width="500"
+  height="500"
+  style="border: 5px solid black"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+&gt;&lt;/iframe&gt;  
+        </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-8">
+        <h2>하이퍼링크 관련 태그</h2>
+        <pre>
+        </pre>
+        <div class="instruction" id="instruction8">
+          <pre>
+&lt;a&gt;                         : 연결, 고정 태그 (anchor)
+                                현재 HTML 문서에서 다른 HTML 문서, 또는 페이지 내부 지정된 id 태그로 이동할 수 있게 만든다.
+                                하이퍼 텍스트는 다른 문서와 구분되는 HTML만의 핵심 기능이다.
+
+href                        : 연결할 주소를 지정하는 속성 (HyperText REFerence)
+target = "_blank"           : 새 탭에서 열기 속성
+
+&lt;a href="http://www.naver.com"&gt;네이버 바로가기&lt;/a&gt;
+
+&lt;a href="http://www.naver.com"&gt;
+  &lt;img src="https://search.pstatic.net/common"&gt;
+&lt;/a&gt;
+        </pre>
+        </div>
+      </div>
+      
+      
+      <div class="container" id="container-9">
+        <h2>하이퍼링크 관련 태그</h2>
+        <pre>
+        </pre>
+        <div class="instruction" id="instruction9">
+          <pre>
+&lt;a&gt;                         : 연결, 고정 태그 (anchor)
+                                현재 HTML 문서에서 다른 HTML 문서, 또는 페이지 내부 지정된 id 태그로 이동할 수 있게 만든다.
+                                하이퍼 텍스트는 다른 문서와 구분되는 HTML만의 핵심 기능이다.
+
+href                        : 연결할 주소를 지정하는 속성 (HyperText REFerence)
+target = "_blank"           : 새 탭에서 열기 속성
+
+&lt;a href="http://www.naver.com"&gt;네이버 바로가기&lt;/a&gt;
+
+&lt;a href="http://www.naver.com"&gt;
+  &lt;img src="https://search.pstatic.net/common"&gt;
+&lt;/a&gt;
+        </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-10">
+        <h2>입력 관련 태그</h2>
+        <pre>
+
+- 내부에 작성된 입력 값을 지정된 곳으로 제출하는 역할
+        </pre>
+        <div class="instruction" id="instruction10">
+          <pre>
+&lt;form&gt;                      : 입력 양식을 작성하는 판 (영역, 공간)
+                                내부에 작성된 입력 값을 지정된 곳으로 제출한다.
+
+action                      : 제출될 곳을 지정하는 속성(제출할 주소를 작성)
+method                      : 설정된 곳으로 데이터를 전달하는 방식
+                                서버에 저장할 것인지, 서버에 저장된 데이터를 호출할 것인지를 선택
+name                        : 이름을 지정하는 속성 (JS 사용)
+target                      : 제출된 페이지를 현재 / 새 탭으로 열기
+
+&lt;input&gt;                     : 웹 문서에서 사용자가 입력할 수 있는 양식을 제공하는 태그
+                                많은 타입이 존재하고, input의 변형 형태도 다수 존재한다.
+                                input 태그에는 name 속성을 무조건은 아니지만 필수로 작성되어야 한다.
+
+type="text"                 : 한 줄 텍스트 입력 상자 (기본값)
+type="password"             : 비밀번호 입력 상지(모자이크 처리)
+type="url"                  : ㄱ
+type="search"               : ㅣ
+type="tel"                  : ㅣ
+type="email"                : text와 동일하지만 용도 구분용과 유효성 검사를 위해 구분한다.
+                            
+type="number"               : 숫자만 입력 가능한 입력 상자
+type="range"                : 슬라이드바를 이용해서 숫자 지정
+                                단독으로 사용 불가능해서 JavaScript와 혼합해서 사용한다.
+
+min                         : 최소값
+max                         : 최대값
+step                        : 숫자 증가 / 감소하는 간격(단계)
+value                       : 초기 기본값 지정                                
+
+type="date"                 : 연월일 설정
+type="month"
+type="week"
+type="time"                 : 시분 설정
+type="datetime-local"       : 연월일시분 설정
+
+radio                       : 여러 값 중 하나 선택
+                                ex) 성별
+checkbox                    : 여러 값 중 여러 값 선택
+                                ex) 상세검색, 관심분야, 취미
+                                id 값이 label의 for 속성 값과 동일하다면 명칭이 동일한 체크박스 선택된다.
+
+&lt;label&gt;                     : 입력 관련 태그(input, select, textarea 등)의 제목을 나타내는 태그
+                                label 태그 내부에 입력 관련 태그 하나를 작성하면 label 태그를 클릭해도 입력 관련 태그가 선택된다.
+                                입력 관련 태그의 id 속성 값을 label 태그의 for 속성 값에 똑같이 적으면 연결된다.
+
+select                      : 클릭하면 밑으로 메뉴가 내려오는 입력 태그 (드롭 다운)
+option                      : select 클릭 시 보여질 메뉴를 작성하는 태그
+                                select와 option은 input의 name, value가 분리된 태그로 생각하면 된다.
+
+&lt;text area&gt;                 : 여러 줄을 입력할 수 있는 입력 태그
+
+name : 제출되는 곳에서 데이터를 읽을 때 필요한 이름
+rows : textarea의 행 크기를 지정 (rows="5" -> 5행)
+cols : textarea의 열 크기를 지정 (cols="5" -> 5열)
+        </pre>
+        </div>
+      </div>
+
+
+
+
+
+
+-> id(식별자) 속성 : 하나의 HTML 문서 내부에서 각각의 HTML 태그를 구분하는 식별 값
+                          -> 중복되는 id가 존재하면 안 됨
+
+        class : 중복으로 이름 사용 가능
+        id    : 중복으로 이름 사용 지양하는 것이 좋음
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <script src="../js/01_HTML.js"></script>
+  </body>
+</html>

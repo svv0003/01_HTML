@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/01_html.css" />
+    <link rel="icon" type="image/png" href="../img/logo.png" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="01_HTML.html" class="nav-link">HTML</a></li>
+          <li class="nav-item"><a href="02_CSS.html" class="nav-link">CSS</a></li>
+          <li class="nav-item"><a href="03_JavaScript.html" class="nav-link">JavaScript</a></li>
+          <li class="nav-item"><a href="04_jQuery.html" class="nav-link">jQuery</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div id="container">
+      <h1>JavaScript</h1>
+
+      <div class="container" id="container-1">
+        <h2>Ajax post</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction1">
+          <pre>
+$.post(URL, data, success_callback, dataType)     : jQuery 메소드, HTTP post 요청을 서버로 전송한다.
+
+                                                    비동기 통신 : 페이지 새로고침 없이 서버와 통신한다.
+                                                    데이터 전송 : JSON, 폼 데이터 등을 서버로 전송한다.
+                                                    간편한 사용 : $.ajax()의 단축 버전
+
+약속 체이닝(promise) : 비동기 작업을 순차적으로 연결 (해야 하는 기능을 약속처럼 줄줄이 연결하는 것)
+                    비동기 함수의 처리 결과로 다른 비동기 함수 호출하는 경우
+                    함수 기능의 호출이 중첩되어 복잡도가 높아진다.
+                    후속 처리 기능을 체이닝하여 여러 개의 프로미스를 연결하여 사용할 수 있다.
+
+약속(Promise)      : "나중에 줄께"와 같이 추후에 작업할 것을 야기하는 것
+                    1. 대기 : 잠깐 기다려
+                    2. 성공 : 작업을 수행한 경우에 따른 결과
+                    3. 실패 : 작업을 하지 못한 경우에 따른 결과
+
+체이닝(Chaining)    : 사슬처럼 기능을 연결하는 것
+
+
+$.post("URL 주소", {
+      서버로 전송할 컬럼 키 1 : "서버에 저장할 데이터 값 1"
+      서버로 전송할 컬럼 키 2 : "서버에 저장할 데이터 값 2"
+      서버로 전송할 컬럼 키 3 : "서버에 저장할 데이터 값 3"
+    }
+  )
+  .done(function(res){
+    console.log("데이터 서버로 전달하는 것을 성공하였습니다.")
+  })
+  .fail(function(error){
+    console.log("데이터 서버로 전달하는 것을 실패하였습니다.")
+  })
+  ________옵션(선택사항)
+  .always(성공/실패 결과에 상관없이 마지막에 무조건 실행하는 함수)
+
+
+$.post("/api/signup", userData)
+  .done(처리 성공 함수)
+  .fail(에러 처리 함수)
+  .always(항상 마지막에 실행하는 함수)
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-1">
+        <h2>데이터 저장</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction1">
+          <pre>
+데이터 저장 방법 3가지
+
+1) DB (Data Base) 저장     : 개념 - 서버의 데이터베이스 (MsySql, Oracle, MongoDB 등에 저장)
+                            장점 - 대용량 데이터 저장 가능 / 여러 사용자 공유 가능 / 영구 저장 가능 / 복잡한 쿼리 가능 / 보안성 높다 -> 최고다.
+                            단점 - 서버 구축 필요 / 비용 발생 / 네트워크 연결 필수 / 설정 복잡함
+                            방법 - 다양한 방법 존재
+                                  주로 DB에 저장하는 형테
+                                  Java, NodeJs 이용해서 다수 저장
+                            시기 - 실제 서비스, 회원정보, 중요 데이터 저장
+
+2) JSON 형태 저장           : 개념 - DB 대신 컴퓨터나 서버의 파일 시스템에 .json 파일로 저장
+  (NodeJs 사용 전까지는 지양)         엑셀, 한글파일, txt 형식 등 다양한 형태로 저장 가능하지만
+                                    json 형태로 저장하고 읽는 것이 빠르기 때문에 주로 json 형태로 읽고 저장한다.
+                                  json 존재하는 파일을 읽는 용도, 저장하는 용도 X
+                                  NodeJs나 Java와 같은 서버를 통해서만 저장 가능
+                            단점 - 브라우저에서 직접적으로 사용 불가능
+                            시기 - 개발 중에 테스트, 소규모 프로젝트, 설정 파일 저장
+
+3) localStorage 저장       : 개념 - 브라우저의 로컬 저장소에 저장
+                            장점 - 서버 불필요, 즉시 사용 가능, 간단한 API, 페이지 새로고침해도 유지, 빠른 속도
+                            단점 - 5-10MB 용량 제한, 브라우저 별로 독립적, 사용자가 삭제 가능, 문자열만 저장 가능, 보안 취약함
+                            시기 - 임시 데이터, 사용자 설정, 장바구니, 학습/연습용
+                            저장 위치 - 개별 컴퓨터의 chrome 내부 또는 엣지 내부 등 브라우저 별 내부에 위치한다.
+                                      방문기록 캐시 등 삭제하면 저장된 데이터도 지워진다.
+          </pre>
+        </div>
+      </div>
+
+
+      <div class="container" id="container-1">
+        <h2>localStorage</h2>
+        <pre></pre>
+        <div class="instruction" id="instruction1">
+          <pre>
+웹페이지에 입력된 값을 저장   ->    localStorage에 저장된 값을 전송   ->   localStorage에 저장된 값을 필요할 때 꺼내서 사용
+
+function signUp (e) {
+  // 기본 동작 (제출) 방지
+  e.preventDefault();
+
+  // 입력값 가져오기
+  const userId = $("#userId").val();
+
+  // 새 회원 정보를 담을 배열 생성
+  const newUser = {
+    userId: userId,
+    userpw: userpw,
+  };
+   
+  // 저장된 목록 (없으면 빈 배열)으로 변환된 문자열 가져오기
+  let userList = JSON.parse(localStorage.getItem("userList") || "[]");
+  
+  // 기존 저장 목록 (없으면 빈 배열)에 입력된 값을 저장
+  userList.push(newUser);
+
+  // localStorage에 문자열로 변환된 배열 목록 저장 (목록 정보)
+  localStorage.setItem("userList", JSON.stringify(userList));
+
+  // localStorage에 객체나 배열이 아닌 단일 항목 저장 (개별 정보)
+  localStorage.setItem("userId", userId);
+  localStorage.setItem("userpw", userpw);
+  
+  // 작업이 완료되면 다음 창으로 이동
+  window.location.href = "웹페이지.html";
+}
+
+
+$(function () {
+  // localStorage에 저장된 단일 항목 가져오기
+  const userId = localStorage.getItem("userId");
+  const userpw = localStorage.getItem("userpw");
+
+  // 이미 저장된 데이터가 있는 경우
+  if (userId) {
+    $("#result").text(userId);
+  } 
+  // 저장된 데이터가 없는 경우
+  else {
+    $("#result").text(`${userId} 아이디로 가입된 계정이 없습니다.`);
+  } 
+})
+
+
+function showUsers () {
+  // 저장된 목록 (없으면 빈 배열)으로 변환된 문자열 가져오기
+  let userList = JSON.parse(localStorage.getItem("userList") || "[]");
+
+  // 목록을 확인할 수 있도록 map 사용하기
+  const userInfo = userList.map(
+    (u) =>
+      `
+      &lt;div class="users"&gt;
+        &lt;div class="user-id"&gt;아이디 : ${u.userId}&lt;/div&gt;
+        &lt;div class="user-pw"&gt;비밀번호 : ${u.userpw}&lt;/div&gt;
+      &lt;/div&gt;
+      `
+  );
+
+  // 결과 창에 목록 대입
+  $("#user-list").html(userInfo);
+}
+
+function removeAllUsers(e){
+  // 기본 동작 (삭제) 방지
+  e.preventDefault();
+
+  // 한 번 더 의사를 물어보기
+  if (confirm("정말 모든 회원을 삭제하시겠습니까?")) {
+
+    // yes==true인 경우 삭제 진행
+    localStorage.removeItem("userList");
+
+    // 삭제 알림
+    alert("모든 회원 정보가 삭제되었습니다.");
+
+    // 새로고침해서 목록을 갱신
+    location.reload();
+  }
+}
+
+
+userList.push("username": username, "password": userpw);
+userList                : localStorage에 key 명칭으로 지정되어 있는 유저 목록을 담은 변수명
+.push()                 : 브라우저에서 저장된 리스트가 있든 없든 .push() 메소드로 맨 뒤에 추가하여 항목을 저장한다.
+newUser                 : 위에서 소비자가 작성한 값을 key=username, 값=username 형태로 가져와서 저장한다.
+
+localStorage.setItem("userList", JSON.stringify(userList));
+localStorage            : 문자명만 저장 가능하기 때문에 배열, 객체는 문자열 형태 변환 필수!!
+.setItem("key":data)    : 데이터를 저장할 때 사용하는 메소드
+.getItem("key")         : 데이터를 가져올 때 사용하는 메소드
+JSON.stringify()        : JS 객체, 배열  ->  JSON 문자열 변환
+JSON.parse()            : JSON 문자열   ->  JS 객체, 배열 변환
+
+let cf = confirm("정말 삭제하시겠습니까?");
+if (cf == true) {
+  localStorage.removeItem("userList");
+}
+
+          </pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <script src="../js/01_html.js"></script>
+  </body>
+</html>
